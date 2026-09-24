@@ -9,6 +9,9 @@
     },
 
     "complex_dicio": {
-        "a": ".1. Documentos"
+        "a": ".0. Documentos em atividade de .1., ",
+        "a1": ".0. cocumentos ativos; ",
+        "a2": ".0. documentos desativos; ",
+        "a3": ".0. documentos perdidos; "
     }
 }
