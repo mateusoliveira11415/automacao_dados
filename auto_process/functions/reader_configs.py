@@ -11,7 +11,7 @@ with open("configs/hot_keys.json", "r", encoding="utf-8") as arquivo:
 with open("configs/context.json", "r", encoding="utf-8") as arquivo:
     configs = json.load(arquivo)
 
-    additional_enter = configs.get("aditional_enter", True)
+    additional_enter = configs.get("additional_enter", True)
 
     simple_dicio = configs["simple_dicio"]
     compound_dicio = configs["compound_dicio"]

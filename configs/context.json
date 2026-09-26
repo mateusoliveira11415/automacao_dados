@@ -1,13 +1,11 @@
 {
-    "aditional_enter": true,
+    "additional_enter": true,
     "simple_dicio": {
         "1": "Mensagem simples de chave 1"
     },
-
     "compound_dicio": {
         "1": "Mensagem composta de chave 1, dado1: .0.; dado2: .1."
     },
-
     "complex_dicio": {
         "a": ".0. Documentos em atividade de .1., ",
         "a1": ".0. cocumentos ativos; ",
