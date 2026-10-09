@@ -7,6 +7,9 @@ with open("encoded_data.txt", "r", encoding="utf-8") as arquivo:
     for linha in data_list:
         linha = linha.strip()
 
+        if not linha:
+            continue
+
         match linha[0]:
             case c:
                 if c.isdigit():
