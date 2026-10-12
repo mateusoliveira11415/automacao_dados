@@ -1,7 +1,7 @@
 import json
 
 
-with open("preferences.json", "r", encoding="utf-8") as arquivo:
+with open("configs/preferences.json", "r", encoding="utf-8") as arquivo:
     preferences = json.load(arquivo)
 
     button_color = preferences["button_color"]
