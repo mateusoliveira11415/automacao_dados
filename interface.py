@@ -28,8 +28,8 @@ ctk.CTkButton(
     root_selecoes,
     text="Inserir linha",
     command=lambda: ifuncs.trocar_aba(root_selecoes, root_inserir_linha),
-    fg_color=rdp.button_color,
-    hover_color=rdp.button_hover_color
+    fg_color=rdp.preferences["button_color"],
+    hover_color=rdp.preferences["button_hover_color"]
 ).grid(
     row=0,
     column=0
@@ -75,9 +75,9 @@ selecionar_dicionario = ctk.CTkOptionMenu(
         "Dicionário complexo"
     ],
     command=lambda nome_dicionario: ifuncs.select_dicio(nome_dicionario, selecionar_chave),
-    fg_color=rdp.button_color,
-    button_color=rdp.button_color,
-    button_hover_color=rdp.button_hover_color
+    fg_color=rdp.preferences["button_color"],
+    button_color=rdp.preferences["button_color"],
+    button_hover_color=rdp.preferences["button_hover_color"]
 )
 selecionar_dicionario.grid(
     row=2,
@@ -100,9 +100,10 @@ ctk.CTkLabel(
 selecionar_chave = ctk.CTkOptionMenu(
     root_inserir_linha,
     values=[],
-    fg_color=rdp.button_color,
-    button_color=rdp.button_color,
-    button_hover_color=rdp.button_hover_color
+    command=lambda chave: ifuncs.codificar_mensagem(selecionar_dicionario.get(), chave),
+    fg_color=rdp.preferences["button_color"],
+    button_color=rdp.preferences["button_color"],
+    button_hover_color=rdp.preferences["button_hover_color"]
 )
 selecionar_chave.grid(
     row=4,
@@ -116,8 +117,8 @@ ctk.CTkButton(
     root_inserir_linha,
     text="Voltar",
     command=lambda: ifuncs.trocar_aba(root_inserir_linha, root_selecoes),
-    fg_color=rdp.button_color,
-    hover_color=rdp.button_hover_color
+    fg_color=rdp.preferences["button_color"],
+    hover_color=rdp.preferences["button_hover_color"]
 ).grid(
     row=10,
     column=0,
@@ -125,14 +126,14 @@ ctk.CTkButton(
     padx=12
 )
 
-ctk.CTkButton(
+previa_texto = ctk.CTkLabel(
     root_inserir_linha,
-    text="Voltar",
-    command=lambda: ifuncs.trocar_aba(root_inserir_linha, root_selecoes),
-    fg_color=rdp.button_color,
-    hover_color=rdp.button_hover_color
-).grid(
-    row=10,
+    text="Prévia da mensagem",
+    font=("Arial", 16),
+    text_color="#3efe43"
+)
+previa_texto.grid(
+    row=9,
     column=0,
     sticky="w",
     padx=12
@@ -142,8 +143,8 @@ ctk.CTkButton(
     root_inserir_linha,
     text="Registrar linha",
     command=lambda: print("Clicaram em mim"),
-    fg_color=rdp.button_color,
-    hover_color=rdp.button_hover_color
+    fg_color=rdp.preferences["button_color"],
+    hover_color=rdp.preferences["button_hover_color"]
 ).grid(
     row=10,
     column=0,
@@ -156,8 +157,8 @@ ctk.CTkButton(
     root_inserir_linha,
     text="Voltar",
     command=lambda: ifuncs.trocar_aba(root_inserir_linha, root_selecoes),
-    fg_color=rdp.button_color,
-    hover_color=rdp.button_hover_color
+    fg_color=rdp.preferences["button_color"],
+    hover_color=rdp.preferences["button_hover_color"]
 ).grid(
     row=10,
     column=1,
@@ -165,5 +166,7 @@ ctk.CTkButton(
     padx=12
 )
 
+
+ifuncs.previa_label = previa_texto
 
 root.mainloop()

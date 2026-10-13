@@ -1,5 +1,5 @@
-from functions import text as text_func
-from functions import reader_configs as rconfig
+from auto_process.functions import text as text_func
+from auto_process.functions import reader_configs as rconfig
 import pyautogui as auto
 import pyperclip as clip
 import time
@@ -20,7 +20,7 @@ def past_text(text: str, additionalEnter=rconfig.additional_enter):
     auto.press("enter")
 
 
-def render_simple_compound(infor: str):
+def render_simple_compound(infor: str, write=False):
     info_list = infor.split(",")
     primary_key = info_list[0]
 
@@ -30,8 +30,12 @@ def render_simple_compound(infor: str):
 
     if not int(primary_key):
         text = rconfig.simple_dicio.get(info_list[1], rconfig.none_key)
-        past_text(text)
-        return
+
+        if write:
+            past_text(text)
+            return
+
+        return text
 
     try:
         text = rconfig.compound_dicio.get(primary_key, rconfig.none_key)
@@ -40,17 +44,24 @@ def render_simple_compound(infor: str):
         text, info_list = text_func.replace_placeholders(text, replace_times, info_list)
 
     except IndexError:
-        past_text(rconfig.index_error)
-        return
+        if write:
+            past_text(rconfig.index_error)
+            return
+        return rconfig.index_error
 
     except ValueError:
-        past_text(rconfig.value_error)
+        if write:
+            past_text(rconfig.value_error)
+            return
+        return rconfig.value_error
+
+    if write:
+        past_text(text)
         return
-    
-    past_text(text)
+    return text
 
 
-def render_complex(infor: str):
+def render_complex(infor: str, write=False):
     info_list = infor.split(",")
 
     try:
@@ -94,5 +105,8 @@ def render_complex(infor: str):
         past_text(rconfig.value_error)
         return
 
-    past_text(text)
+    if write:
+        past_text(text)
+        return
+    return text
 

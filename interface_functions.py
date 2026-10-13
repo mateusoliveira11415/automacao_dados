@@ -1,7 +1,8 @@
 import customtkinter as ctk
-from auto_process.functions import reader_configs as rdcfg
+from auto_process import process_prior_data as prior
 import modify_context as mdc
 
+previa_label: ctk.CTkLabel
 
 relacao_dicio = {
     "Dicionário simples": "simple_dicio",
@@ -32,3 +33,20 @@ def renderizar_opcoes(nome_dicionario:str):
         print("Dicionário composto selecionado")
         return
     print("Dicionário complexo selecionado")
+
+
+def codificar_mensagem(dicio_name: str, primary_key: str):
+    match dicio_name:
+        case "Dicionário simples":
+            codigo = f"0,{primary_key}"
+            print("Código gerado:", codigo)
+            mostrar_previa(codigo)
+
+
+def mostrar_previa(codigo_da_previa):
+    print("Código recebido:", codigo_da_previa)
+
+    resultado = prior.recieve_prior(codigo_da_previa)
+    print("Resultado recebido:", repr(resultado))
+
+    previa_label.configure(text=resultado)

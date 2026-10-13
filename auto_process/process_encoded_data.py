@@ -1,4 +1,4 @@
-import write_functions as wfuncs
+from auto_process import write_functions as wfuncs
 
 wfuncs.initialize_model_shortcut(1)
 
@@ -13,8 +13,8 @@ with open("encoded_data.txt", "r", encoding="utf-8") as arquivo:
         match linha[0]:
             case c:
                 if c.isdigit():
-                    wfuncs.render_simple_compound(linha)
+                    wfuncs.render_simple_compound(infor=linha, write=True)
                     continue
                 if c.islower():
-                    wfuncs.render_complex(linha)
+                    wfuncs.render_complex(infor=linha, write=True)
                     continue
