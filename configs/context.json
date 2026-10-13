@@ -1,10 +1,14 @@
 {
     "additional_enter": true,
     "simple_dicio": {
-        "1": "Mensagem simples de chave 1"
+        "1": "Mensagem simples de chave 1",
+        "2": "Mensagem simples two",
+        "3": "Está dando certo",
+        "4": "Continue assim!"
     },
     "compound_dicio": {
-        "1": "Mensagem composta de chave 1, dado1: .0.; dado2: .1."
+        "1": ["Mensagem composta de chave 1, dado1: .0.; dado2: .1.", 2],
+        "2": ["Atenção: mensagem sinistra vinda do além: .0. dias passados de .1., sendo .2. completos e .3. de meio paríodo", 4]
     },
     "complex_dicio": {
         "a": ".0. Documentos em atividade de .1., ",

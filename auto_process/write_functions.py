@@ -38,7 +38,7 @@ def render_simple_compound(infor: str, write=False):
         return text
 
     try:
-        text = rconfig.compound_dicio.get(primary_key, rconfig.none_key)
+        text = rconfig.compound_dicio.get(primary_key, rconfig.none_key)[0]
         replace_times = int(info_list[1])
         info_list = info_list[2:]
         text, info_list = text_func.replace_placeholders(text, replace_times, info_list)

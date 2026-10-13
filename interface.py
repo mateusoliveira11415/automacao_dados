@@ -38,11 +38,11 @@ ctk.CTkButton(
 
 root_inserir_linha = ctk.CTkFrame(
     root,
+    fg_color="#161616",
     width=800,
     height=800
 )
 root_inserir_linha.grid_propagate(False)
-
 
 ctk.CTkLabel(
     root_inserir_linha,
@@ -100,7 +100,7 @@ ctk.CTkLabel(
 selecionar_chave = ctk.CTkOptionMenu(
     root_inserir_linha,
     values=[],
-    command=lambda chave: ifuncs.codificar_mensagem(selecionar_dicionario.get(), chave),
+    command=lambda chave: ifuncs.codificar_mensagem(selecionar_dicionario.get(), chave, campos_frame),
     fg_color=rdp.preferences["button_color"],
     button_color=rdp.preferences["button_color"],
     button_hover_color=rdp.preferences["button_hover_color"]
@@ -113,24 +113,27 @@ selecionar_chave.grid(
     pady=(0, 12)
 )
 
-ctk.CTkButton(
+campos_frame = ctk.CTkFrame(
     root_inserir_linha,
-    text="Voltar",
-    command=lambda: ifuncs.trocar_aba(root_inserir_linha, root_selecoes),
+    fg_color="transparent"
+)
+
+mostrar_previa = ctk.CTkButton(
+    root_inserir_linha,
+    text="Mostrar prévia",
+    command=lambda: ifuncs.mostrar_previa_composta(selecionar_chave.get()),
     fg_color=rdp.preferences["button_color"],
     hover_color=rdp.preferences["button_hover_color"]
-).grid(
-    row=10,
-    column=0,
-    sticky="w",
-    padx=12
 )
 
 previa_texto = ctk.CTkLabel(
     root_inserir_linha,
     text="Prévia da mensagem",
     font=("Arial", 16),
-    text_color="#3efe43"
+    text_color="#3efe43",
+    wraplength=350,
+    justify="left",
+    anchor="w"
 )
 previa_texto.grid(
     row=9,
@@ -142,7 +145,7 @@ previa_texto.grid(
 ctk.CTkButton(
     root_inserir_linha,
     text="Registrar linha",
-    command=lambda: print("Clicaram em mim"),
+    command=ifuncs,
     fg_color=rdp.preferences["button_color"],
     hover_color=rdp.preferences["button_hover_color"]
 ).grid(
@@ -160,13 +163,13 @@ ctk.CTkButton(
     fg_color=rdp.preferences["button_color"],
     hover_color=rdp.preferences["button_hover_color"]
 ).grid(
-    row=10,
-    column=1,
+    row=11,
+    column=0,
     sticky="w",
     padx=12
 )
 
-
 ifuncs.previa_label = previa_texto
+ifuncs.mostrar_previa_button = mostrar_previa
 
 root.mainloop()

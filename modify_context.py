@@ -15,7 +15,7 @@ def list_key_value_dicio(dicio_name: str, skey=True, svalue=False):
         return
 
     if skey and svalue:
-        return context[dicio_name].items()
+        return dict(context[dicio_name].items())
 
 
     if skey:
